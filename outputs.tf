@@ -11,6 +11,11 @@ output "samba_container_status" {
   value       = "Name: ${podman_container.samba.name}, Status: ${podman_container.samba.state}"
 }
 
+output "nfs_container_status" {
+  description = "Status of the NFS container."
+  value       = "Name: ${podman_container.nfs.name}, Status: ${podman_container.nfs.state}"
+}
+
 output "jellyfin_container_status" {
   description = "Status of the Jellyfin container."
   value       = "Name: ${podman_container.jellyfin.name}, Status: ${podman_container.jellyfin.state}"
@@ -40,4 +45,9 @@ output "mariadb_port" {
 output "samba_ports" {
   description = "Host ports for Samba (SMB)."
   value       = [for port in podman_container.samba.ports : port.host_port]
+}
+
+output "nfs_ports" {
+  description = "Host ports for NFS."
+  value       = [for port in podman_container.nfs.ports : port.host_port]
 }
