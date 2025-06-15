@@ -57,3 +57,11 @@ variable "samba_password" {
   type        = string
   sensitive   = true
 }
+
+# Network range for NFS access
+variable "nfs_network" {
+  description = "The network CIDR range from which NFS clients are allowed to connect (e.g., '192.168.1.0/24')."
+  type        = string
+  default     = "192.168.2.0/24" # Default to a common home network subnet, adjust to your actual network.
+}
+
